@@ -7,9 +7,6 @@ require('dotenv').config()
 // require setup passport
 const passportSetup = require('./middlewares/passport_setup')
 
-// require database
-const connectDB = require('./config/connectDB')
-
 //require authRoute
 const authRoutes = require('./routes/auth');
 
@@ -28,7 +25,11 @@ const passport = require('passport')
 // instance app
 const app = express();
 
+// Middleware bodyparser (express json)
+app.use(express.json())
+
 // connect with DB
+const connectDB = require('./config/connectDB')
 connectDB(); 
 
 // set view engine
@@ -47,6 +48,9 @@ app.use(passport.session());
 // set up routes
 app.use('/auth', authRoutes);
 app.use('/profile', profileRoutes);
+
+// Routes
+app.use('/api/project', require('./routes/project'))
 
 // create home route
 app.get('/', (req, res) => {

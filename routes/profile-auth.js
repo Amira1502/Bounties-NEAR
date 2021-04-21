@@ -1,4 +1,4 @@
-// require express & instance
+// require express & router
 const router = require('express').Router();
 
 
@@ -6,7 +6,7 @@ const router = require('express').Router();
 const authCheck = (res,req,next) =>{
     if(req.user){
         // if user is not logged in
-        res.redirect('/auth/login');
+        res.redirect('/profile');
     
     }
     else {

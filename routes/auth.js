@@ -1,4 +1,4 @@
-// require express & instance
+// require express & router
 const router = require('express').Router();
 
 // require passport
@@ -40,4 +40,4 @@ router.get('/github/redirect',passport.authenticate('github'),(req,res) => {
 })
 
 
-module.exports 
+module.exports = router;
